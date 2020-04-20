@@ -1,4 +1,4 @@
-name: time_table
+name: Time Table
 description: A new Flutter application.
 
 # The following defines the version and build number for your application.
@@ -28,10 +28,16 @@ dependencies:
   syncfusion_flutter_calendar: ^17.4.40-beta
   pie_chart: ^3.1.1
   shared_preferences: ^0.5.4+5
+  flutter_launcher_icons: ^0.7.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/baseline_done_all_black_18dp.png"
 
 
 # For information on the generic Dart part of this file, see the
