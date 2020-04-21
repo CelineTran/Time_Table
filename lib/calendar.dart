@@ -23,7 +23,7 @@ class _CalendarPageState extends State<CalendarPage> {
     Color(colorL[1]),
     Color(colorL[2]),
     Color(colorL[3]),
-    Colors.blue,
+    Colors.white,
   ];
 
   var hour1 = intTime1;
@@ -40,7 +40,9 @@ class _CalendarPageState extends State<CalendarPage> {
     else if(labels[3] == "N/A")
       hour4 = 24 - (hour1 + hour2 + hour3);
 
-    left = 24 - (hour1 + hour2 + hour3 + hour4);
+    var total = hour1 + hour2 + hour3 + hour4;
+    if(total < 24)
+      left = 24 - total;
   }
 
   @override
@@ -51,7 +53,8 @@ class _CalendarPageState extends State<CalendarPage> {
     dataMap.putIfAbsent(labels[1], () => (hour2));
     dataMap.putIfAbsent(labels[2], () => (hour3));
     dataMap.putIfAbsent(labels[3], () => (hour4));
-    dataMap.putIfAbsent("Other", () => left);
+    if(labels[3] != 'N/A')
+      dataMap.putIfAbsent("Other", () => left);
     _controller = CalendarController();
     _events ={};
   }
@@ -146,6 +149,7 @@ class _CalendarPageState extends State<CalendarPage> {
   Widget build(BuildContext context) {
     getDate();
     return Scaffold(
+        backgroundColor: Colors.grey[900],
         appBar: AppBar(
           title: Text(widget.title),
           actions: <Widget>[
@@ -160,9 +164,7 @@ class _CalendarPageState extends State<CalendarPage> {
             )
           ],
         ),
-        body: Container(
-            decoration: BoxDecoration(color: Colors.black87),
-          child: Column(
+        body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget> [
               TableCalendar(
@@ -208,11 +210,12 @@ class _CalendarPageState extends State<CalendarPage> {
                   colorList: colorList,
                   showLegends: true,
                   legendPosition: LegendPosition.right,
-                  decimalPlaces: 1,
+                  decimalPlaces: 2,
                   showChartValueLabel: true,
                   initialAngle: 0,
                   legendStyle: TextStyle(
                       color: Colors.white,
+                      fontFamily: 'Roboto',
                   ),
                   chartValueStyle: defaultChartValueStyle.copyWith(
                     color: Colors.blueGrey[900].withOpacity(0.9),
@@ -222,7 +225,6 @@ class _CalendarPageState extends State<CalendarPage> {
               ),
             ]
           )
-        )
     );
   }
 }

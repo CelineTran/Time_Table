@@ -26,10 +26,10 @@ class _SetupPageState extends State<SetupPage> {
 
   ColorSwatch _tempMainColor;
   Color _tempShadeColor;
-  ColorSwatch _mainColor1 = Colors.blue;
-  ColorSwatch _mainColor2 = Colors.blue;
-  ColorSwatch _mainColor3 = Colors.blue;
-  ColorSwatch _mainColor4 = Colors.blue;
+  ColorSwatch _mainColor1 = Colors.grey;
+  ColorSwatch _mainColor2 = Colors.grey;
+  ColorSwatch _mainColor3 = Colors.grey;
+  ColorSwatch _mainColor4 = Colors.grey;
   Color _shadeColor = Colors.blue[800];
 
   void _openDialog1(var num, title, Widget content) {
@@ -126,19 +126,18 @@ class _SetupPageState extends State<SetupPage> {
     colorL.clear();
 
     return Scaffold(
+        backgroundColor: Colors.grey[900],
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: Container(
-            decoration: BoxDecoration(color: Colors.black87),
-            child: Column(
+        body: Column(
                 children: <Widget>[
                   Container(
                     child: Align(
                         alignment: Alignment.topCenter,
                         child: Text(
                           "\n Let's get setup! \n",
-                          style: TextStyle(fontFamily: 'Georgia', fontSize: 30, color: Colors.blue[900]),
+                          style: TextStyle(fontFamily: 'Roboto', fontSize: 30, color: Colors.blue[900], fontWeight: FontWeight.bold),
                         )
                     ),
                   ),
@@ -157,7 +156,7 @@ class _SetupPageState extends State<SetupPage> {
                                 enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(color: Colors.white)
                                   ),
-                                  hintStyle: TextStyle(color: Colors.white),
+                                  hintStyle: TextStyle(color: Colors.white, fontFamily: 'Roboto'),
                                   hintText: 'Enter your first label!'
                               ),
                               onSubmitted: (text){
@@ -195,13 +194,13 @@ class _SetupPageState extends State<SetupPage> {
                               margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
                               width: 300,
                               child: TextField(
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.white, fontFamily: 'Roboto'),
                                 textCapitalization: TextCapitalization.characters,
                                 decoration: InputDecoration(
                                     enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(color: Colors.white)
                                     ),
-                                    hintStyle: TextStyle(color: Colors.white),
+                                    hintStyle: TextStyle(color: Colors.white, fontFamily: 'Roboto'),
                                     hintText: 'Enter your second label!'
                                 ),
                                 onSubmitted: (text){
@@ -240,12 +239,12 @@ class _SetupPageState extends State<SetupPage> {
                               width: 300,
                               child: TextField(
                                 textCapitalization: TextCapitalization.characters,
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.white, fontFamily: 'Roboto'),
                                 decoration: InputDecoration(
                                     enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(color: Colors.white)
                                     ),
-                                    hintStyle: TextStyle(color: Colors.white),
+                                    hintStyle: TextStyle(color: Colors.white, fontFamily: 'Roboto'),
                                     hintText: 'Enter your third label!'
                                 ),
                                 onSubmitted: (text){
@@ -284,12 +283,12 @@ class _SetupPageState extends State<SetupPage> {
                               width: 300,
                               child: TextField(
                                 textCapitalization: TextCapitalization.characters,
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.white, fontFamily: 'Roboto'),
                                 decoration: InputDecoration(
                                     enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(color: Colors.white)
                                     ),
-                                    hintStyle: TextStyle(color: Colors.white),
+                                    hintStyle: TextStyle(color: Colors.white, fontFamily: 'Roboto'),
                                     hintText: 'Enter your fourth label!'
                                 ),
                                 onSubmitted: (text){
@@ -335,14 +334,13 @@ class _SetupPageState extends State<SetupPage> {
                           textColor: Colors.white,
                           child: Text(
                             'SAVE!',
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: 20, fontFamily: 'Roboto'),
                           )
                         )
                     ),
                   ),
                 ]
             )
-        )
     );
   }
 }

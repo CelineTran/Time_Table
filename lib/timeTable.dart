@@ -92,7 +92,7 @@ class _timeTablePageState extends State<timeTablePage> {
     Color(colorL[1]),
     Color(colorL[2]),
     Color(colorL[3]),
-    Colors.blue,
+    Colors.white,
   ];
 
   Map<String, double> dataMap = new Map();
@@ -110,7 +110,9 @@ class _timeTablePageState extends State<timeTablePage> {
     else if(labels[3] == "N/A")
       hour4 = 24 - (hour1 + hour2 + hour3);
 
-    left = 24 - (hour1 + hour2 + hour3 + hour4);
+    var total = hour1 + hour2 + hour3 + hour4;
+    if(total < 24)
+      left = 24 - total;
   }
   @override
   void initState() {
@@ -120,23 +122,23 @@ class _timeTablePageState extends State<timeTablePage> {
     dataMap.putIfAbsent(labels[1], () => (hour2));
     dataMap.putIfAbsent(labels[2], () => (hour3));
     dataMap.putIfAbsent(labels[3], () => (hour4));
-    dataMap.putIfAbsent("Other", () => left);
+    if(labels[3] != 'N/A')
+      dataMap.putIfAbsent("Other", () => left);
   }
 
   @override
   Widget build(BuildContext context) {
     getDate();
     return Scaffold(
+      backgroundColor: Colors.grey[900],
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Container(
-        decoration: BoxDecoration(color: Colors.black87),
-        child: Column(
+      body: Column(
           children: <Widget>[
             Text(
                 "\n" + day + ", " + month + " " + (date.day).toString() + "\n\n",
-                style: TextStyle(fontSize: 40, fontFamily: 'Georgia', color: Colors.blue[900])
+                style: TextStyle(fontSize: 40, fontFamily: 'Roboto', color: Colors.blue[900])
             ),
             Container(
               margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
@@ -152,11 +154,12 @@ class _timeTablePageState extends State<timeTablePage> {
                 colorList: colorList,
                 showLegends: true,
                 legendPosition: LegendPosition.right,
-                decimalPlaces: 1,
+                decimalPlaces: 2,
                 showChartValueLabel: true,
                 initialAngle: 0,
                 legendStyle: TextStyle(
                   color: Colors.white,
+                    fontFamily: 'Roboto'
                 ),
                 chartValueStyle: defaultChartValueStyle.copyWith(
                   color: Colors.blueGrey[900].withOpacity(0.9),
@@ -177,7 +180,7 @@ class _timeTablePageState extends State<timeTablePage> {
                   },
                   child: Text(
                     'Log More',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, fontFamily: 'Roboto'),
                   )
               ),
             ),
@@ -187,21 +190,20 @@ class _timeTablePageState extends State<timeTablePage> {
                 color: Colors.blue[900],
                 textColor: Colors.white,
                 onPressed: (){
-                 Navigator.push(
-                  context,
+                  Navigator.of(context).pop();
+                  Navigator.push(
+                    context,
                  MaterialPageRoute(builder: (context) => CalendarPage(title:'Calendar')),
                 );
                },
                child: Text(
                 'Go to Calendar',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, fontFamily: 'Roboto'),
                )
               ),
             ),
-
           ],
         ),
-      ),
     );
   }
 }

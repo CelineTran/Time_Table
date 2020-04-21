@@ -20,18 +20,17 @@ class _LogPageState extends State<LogPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.grey[900],
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: Container(
-          decoration: BoxDecoration(color: Colors.black87),
-            child: Column(
+        body:Column(
               children: <Widget>[
                 Align(
                   alignment: Alignment.topCenter,
                   child: Text(
                     "\n\n          Let's get to logging! \nWhat would you like to log?",
-                    style: TextStyle(fontSize: 30, fontFamily: 'Georgia', color: Colors.blue[900]),
+                    style: TextStyle(fontSize: 30, fontFamily: 'Roboto', color: Colors.blue[900], fontWeight: FontWeight.bold),
                   )
                 ),
                 Align(
@@ -49,7 +48,7 @@ class _LogPageState extends State<LogPage> {
                           textColor: Colors.white,
                           child: Text (
                             labels[0],
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Roboto'),
                           ),
                         ),
                       ),
@@ -69,7 +68,7 @@ class _LogPageState extends State<LogPage> {
                         textColor: Colors.white,
                         child: Text (
                           labels[1],
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Roboto'),
                         ),
                       ),
                     ),
@@ -89,7 +88,7 @@ class _LogPageState extends State<LogPage> {
                         textColor: Colors.white,
                         child: Text (
                           labels[2],
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Roboto'),
                         ),
                       ),
                     ),
@@ -109,14 +108,13 @@ class _LogPageState extends State<LogPage> {
                         textColor: Colors.white,
                         child: Text (
                           labels[3],
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Roboto'),
                         ),
                       ),
                   ),
                 ),
                 ],
               ),
-            ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'setup.dart';
+import 'calendar.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,11 +8,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Time Table',
+      title: '24 Hours',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Time Table'),
+      home: MyHomePage(title: '24 Hours'),
     );
   }
 }
@@ -28,15 +29,25 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.grey[900],
       appBar: AppBar(
         title: Text(widget.title),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.calendar_today),
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CalendarPage(title:'Calendar')),
+              );
+            },
+          )
+        ],
       ),
-      body: Container(
-          decoration: BoxDecoration(color: Colors.black87),
-        child: Column(
+      body: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.fromLTRB(0, 100, 0, 0),
+              margin: EdgeInsets.fromLTRB(0, 150, 0, 0),
               child: Icon(
                 Icons.done_all,
                 size: 100,
@@ -46,10 +57,10 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               child: RichText(
                 text: TextSpan(
-                  text: '\n  WELCOME',
-                  style: TextStyle(fontSize: 50, fontFamily: 'Georgia', color: Colors.blue[900]),
+                  text: '   WELCOME',
+                  style: TextStyle(fontSize: 50, fontFamily: 'Roboto', color: Colors.blue[900], fontWeight: FontWeight.bold),
                   children: <TextSpan>[
-                    TextSpan(text: '\n   TO YOUR DAILY TIME TRACKER!', style:TextStyle(fontSize: 20)),
+                    TextSpan(text: '\n  TO YOUR DAILY TIME TRACKER!', style:TextStyle(fontSize: 20)),
                   ],
                 ),
               ),
@@ -66,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       );
                     },
                     child: Text(
-                      'tap to continue... ',
+                      'tap get to logging! ',
                         style: TextStyle(fontStyle: FontStyle.italic, fontFamily: 'Georgia', fontSize: 20, color: Colors.blue[900]),
                     )
                   )
@@ -75,7 +86,6 @@ class _MyHomePageState extends State<MyHomePage> {
             )
             ]
           )
-        )
     );
   }
 }

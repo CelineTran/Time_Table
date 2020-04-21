@@ -55,6 +55,7 @@ class _Log2PageState extends State<Log2Page> {
 
     setState(() {
       endTime = picked;
+      totalTime = timeElapsed();
     });
 
     var period = "pm";
@@ -105,48 +106,48 @@ class _Log2PageState extends State<Log2Page> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+        backgroundColor: Colors.grey[900],
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: Container(
-          decoration: BoxDecoration(color: Colors.black87),
-          child: Column(
-            children: <Widget>[
-              Align(
-                  alignment: Alignment.topCenter,
-                  child: Text(
-                    '\n' + widget.title,
-                    style: TextStyle(fontFamily: 'Georgia', fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
-                  )
-              ),
-              Stack(
-                children: <Widget> [
-                  Container(
-                      margin: EdgeInsets.fromLTRB(190, 15, 0, 0),
-                      width: 200,
-                      child: FlatButton(
-                          color: Colors.blue[900],
-                          onPressed: (){
-                            selectStartTime(context);
-                          },
-                          child: Text(
-                            defaultStart.toString(),
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                          )
-                      )
-                  ),
-                  Container(
-                      margin: EdgeInsets.fromLTRB(20, 20, 0, 0),
-                      child: Text(
-                        'Start Time: ',
-                        style: TextStyle(fontFamily: 'Georgia', fontSize: 30, color: Colors.white),
-                      )
-                  ),
-                ],
-              ),
-              Stack(
-                children: <Widget> [
-                  Container(
+        body:SingleChildScrollView (
+            child: Column(
+              children: <Widget>[
+                Align(
+                    alignment: Alignment.topCenter,
+                    child: Text(
+                      '\n' + widget.title,
+                      style: TextStyle(fontFamily: 'Roboto', fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+                    )
+                ),
+                Stack(
+                  children: <Widget> [
+                    Container(
+                        margin: EdgeInsets.fromLTRB(190, 15, 0, 0),
+                        width: 200,
+                        child: FlatButton(
+                            color: Colors.blue[900],
+                            onPressed: (){
+                              selectStartTime(context);
+                            },
+                            child: Text(
+                              defaultStart.toString(),
+                              style: TextStyle(fontSize: 20, color: Colors.white, fontFamily: 'Roboto'),
+                            )
+                        )
+                    ),
+                    Container(
+                        margin: EdgeInsets.fromLTRB(20, 20, 0, 0),
+                        child: Text(
+                          'Start Time: ',
+                          style: TextStyle(fontFamily: 'Roboto', fontSize: 30, color: Colors.white),
+                        )
+                    ),
+                  ],
+                ),
+                Stack(
+                  children: <Widget> [
+                    Container(
                       margin: EdgeInsets.fromLTRB(190, 20, 0, 0),
                       width: 200,
                       child: FlatButton(
@@ -156,7 +157,7 @@ class _Log2PageState extends State<Log2Page> {
                           },
                           child: Text(
                             defaultEnd.toString(),
-                            style: TextStyle(fontSize: 20, color: Colors.white),
+                            style: TextStyle(fontSize: 20, color: Colors.white, fontFamily: 'Roboto'),
                           )
                       )
                   ),
@@ -164,7 +165,7 @@ class _Log2PageState extends State<Log2Page> {
                       margin: EdgeInsets.fromLTRB(20, 20, 0, 0),
                       child: Text(
                         'End Time: ',
-                        style: TextStyle(fontFamily: 'Georgia', fontSize: 30, color: Colors.white),
+                        style: TextStyle(fontFamily: 'Roboto', fontSize: 30, color: Colors.white),
                       )
                   ),
                 ],
@@ -173,7 +174,7 @@ class _Log2PageState extends State<Log2Page> {
                   margin: EdgeInsets.fromLTRB(0, 20, 155, 0),
                   child: Text(
                     'Description: ',
-                    style: TextStyle(fontFamily: 'Georgia', fontSize: 30, color: Colors.white),
+                    style: TextStyle(fontFamily: 'Roboto', fontSize: 30, color: Colors.white),
                   )
               ),
               Container(
@@ -181,12 +182,12 @@ class _Log2PageState extends State<Log2Page> {
                   width: 350,
                   child: TextField(
                     keyboardType: TextInputType.multiline,
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white, fontFamily: 'Roboto'),
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white)
                         ),
-                        hintStyle: TextStyle(color: Colors.white),
+                        hintStyle: TextStyle(color: Colors.white, fontFamily: 'Roboto'),
                         hintText: 'Add any description to your activity...'
                     ),
                     onSubmitted: (text){
@@ -197,8 +198,8 @@ class _Log2PageState extends State<Log2Page> {
               Container(
                   margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
                   child: Text(
-                    'Total Time: ' + timeElapsed(),
-                    style: TextStyle(fontFamily: 'Georgia', fontSize: 30, color: Colors.white),
+                    'Total Time: ' + totalTime,
+                    style: TextStyle(fontFamily: 'Roboto', fontSize: 30, color: Colors.white),
                   )
               ),
               Container(
@@ -210,18 +211,18 @@ class _Log2PageState extends State<Log2Page> {
                       Navigator.of(context).pop();
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => timeTablePage(title:'Time Table')),
+                        MaterialPageRoute(builder: (context) => timeTablePage(title:'Time Chart')),
                       );
                     },
                     child: Text(
                       'FINISH',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Georgia', fontSize: 20),
+                      style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Roboto', fontSize: 20),
                     )
+                  ),
                 ),
-              ),
-            ],
-          )
-        ),
+              ],
+            )
+          ),
     );
   }
 }
